@@ -1,3 +1,4 @@
+
 name: build-and-deploy
 on:
   push:
@@ -10,6 +11,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -22,8 +26,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Debug git remote (diagnostic)
+        run: |
+          git --version
+          git config --list
+          git remote -v
+          git ls-remote origin || true
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          publish_branch: gh-pages
+          allow_empty_commit: true
