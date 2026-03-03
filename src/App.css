@@ -1,0 +1,77 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling behavior */
+html {
+ scroll-behavior: auto;
+}
+
+/* Section stacking for pinned sections */
+.section-pinned {
+ will-change: transform;
+}
+
+/* Card hover effects */
+.card-white {
+ transition: box-shadow 0.3s ease;
+}
+
+/* Button interactions */
+.btn-primary,
+.btn-secondary {
+ position: relative;
+ overflow: hidden;
+}
+
+/* Link hover animations */
+a {
+ transition: color 0.3s ease;
+}
+
+/* Review card styling */
+.s7-review {
+ transition: transform 0.3s ease;
+}
+
+.s7-review:hover {
+ transform: translateX(4px);
+}
+
+/* Navigation blur effect */
+nav {
+ background: linear-gradient(to bottom, rgba(246, 247, 243, 0.9) 0%, rgba(246, 247, 243, 0) 100%);
+}
+
+/* Mobile responsiveness adjustments */
+@media (max-width: 768px) {
+ .section-pinned {
+   min-height: 100vh;
+   height: auto;
+ }
+ 
+ .text-responsive-h1 {
+   font-size: clamp(32px, 8vw, 44px);
+ }
+ 
+ .text-responsive-h2 {
+   font-size: clamp(28px, 6vw, 34px);
+ }
+}
+
+/* Ensure images don't overflow */
+img {
+ max-width: 100%;
+ height: auto;
+}
+
+/* Focus states for accessibility */
+button:focus-visible,
+a:focus-visible {
+ outline: 2px solid #7B8F71;
+ outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+ background: rgba(123, 143, 113, 0.3);
+ color: #2A2A2A;
+}
